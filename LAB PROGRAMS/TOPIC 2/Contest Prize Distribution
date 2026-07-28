@@ -1,0 +1,26 @@
+def distribute_prizes(players):
+    players = players[:]
+    n = len(players)
+
+    for i in range(n):
+        max_index = i
+
+        for j in range(i + 1, n):
+            if players[j][1] > players[max_index][1]:
+                max_index = j
+
+        players[i], players[max_index] = players[max_index], players[i]
+
+    return players
+
+participants = [
+    ("Asha",88),
+    ("Ravi",95),
+    ("Meera",79),
+    ("Dev",95)
+]
+
+ranking = distribute_prizes(participants)
+
+for name, score in ranking:
+    print(name, score)
